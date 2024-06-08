@@ -2,13 +2,7 @@
 
 # Check if a private key is provided as an argument
 if [ -z "$1" ]; then
-    echo "Usage: $0 $PRIVATE_KEY"
-    exit 1
-fi
-
-# Ensure the user isn't trying to get help
-if [[ "$1" == "-h "]] || [[ "$1" == "--h" ]] || [[ "$1" == "--help" ]] || [[ "$1" == "-help" ]]; then
-    echo "Usage: $0 $PRIVATE_KEY"
+    echo "Usage: $0 \$PRIVATE_KEY"
     exit 1
 fi
 
@@ -16,11 +10,18 @@ fi
 PRIVATE_KEY=$1
 PRIVATE_KEY_FILE="$HOME/.ssh/id_rsa"
 
+# Ensure the user isn't trying to get help
+if [[ "$PRIVATE_KEY" == "-h" ]] || [[ "$PRIVATE_KEY" == "--h" ]] || [[ "$PRIVATE_KEY" == "--help" ]] || [[ "$PRIVATE_KEY" == "-help" ]]; then
+    echo "Usage: $0 \$PRIVATE_KEY"
+    exit 1
+fi
+
+
 # Ensure the .ssh directory exists
 mkdir -p "$HOME/.ssh"
 
 # Determine if the input is a file or string
-if [ -f $FILE ]; then
+if [ -f $PRIVATE_KEY ]; then
 
     # Copy the private key to the id_rsa file
     cp "$PRIVATE_KEY_FILE" "$DEST_PRIVATE_KEY"

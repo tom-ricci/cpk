@@ -2,19 +2,19 @@
 
 # Check if a public key is provided as an argument
 if [ -z "$1" ]; then
-    echo "Usage: $0 $PUBLIC_KEY"
-    exit 1
-fi
-
-# Ensure the user isn't trying to get help
-if [[ "$1" == "-h "]] || [[ "$1" == "--h" ]] || [[ "$1" == "--help" ]] || [[ "$1" == "-help" ]]; then
-    echo "Usage: $0 $PUBLIC_KEY"
+    echo "Usage: $0 \$PUBLIC_KEY"
     exit 1
 fi
 
 # Variables!!
 PUBLIC_KEY=$1
 AUTHORIZED_KEYS_FILE="$HOME/.ssh/authorized_keys"
+
+# Ensure the user isn't trying to get help
+if [[ "$PUBLIC_KEY" == "-h" ]] || [[ "$PUBLIC_KEY" == "--h" ]] || [[ "$PUBLIC_KEY" == "--help" ]] || [[ "$PUBLIC_KEY" == "-help" ]]; then
+    echo "Usage: $0 \$PUBLIC_KEY"
+    exit 1
+fi
 
 # Ensure the .ssh directory exists
 mkdir -p "$HOME/.ssh"
