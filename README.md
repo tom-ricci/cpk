@@ -28,8 +28,4 @@ CPK is made of two Bash scripts, `public.sh` and `private.sh`. It is deployed to
 The workflow relies on a few secrets, namely:
 - `CLOUDFLARE_API_TOKEN`
 - `CLOUDFLARE_ACCOUNT_ID`
-- `PUBLIC_PROJECT_ID`
-- `PRIVATE_PROJECT_ID`
 - `GITHUB_TOKEN` (automatically provided at runtime)
-
-Not *all* of these need to be secrets, but I'd rather they stay private.
