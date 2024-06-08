@@ -24,7 +24,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ secrets.PUBLIC_PROJECT_ID }}
+          projectName: cpk-public
           directory: ./dist/public
           githubToken: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy private script
@@ -32,6 +32,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ secrets.PRIVATE_PROJECT_ID }}
+          projectName: cpk-private
           directory: ./dist/private
           githubToken: ${{ secrets.GITHUB_TOKEN }}
