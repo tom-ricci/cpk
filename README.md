@@ -14,10 +14,10 @@ Where `$PUBLIC_KEY` is your public key.
 To update your private key, run the following on the client:
 
 ```bash
-curl -sL private.cpk.thomasricci.dev | bash -s $PRIVATE_KEY
+curl -sL private.cpk.thomasricci.dev | bash -s $PRIVATE_KEY $PUBLIC_KEY
 ```
 
-Where `$PRIVATE_KEY` is your private key or the file containing your private key.
+Where `$PRIVATE_KEY` is your private key or the file containing your private key, and `$PUBLIC_KEY` is your public key (used to set the `.pub` file).
 
 ## development
 CPK is made of two Bash scripts, `public.sh` and `private.sh`. It is deployed to Cloudflare Pages via a Github Actions workflow triggered on every push to `main`. So, to update a script, just push.

@@ -1,21 +1,21 @@
 #!/bin/bash
 
 # Check if a private key is provided as an argument
-if [ -z "$1" ]; then
-    echo "Usage: $0 \$PRIVATE_KEY"
+if [ -z "$1" ] && [ -z "$2" ]; then
+    echo "Usage: $0 \$PRIVATE_KEY \$PUBLIC_KEY"
     exit 1
 fi
 
 # Variables!!
 PRIVATE_KEY=$1
-PRIVATE_KEY_FILE="$HOME/.ssh/id_rsa"
+PUBLIC_KEY=$( echo $2 cut -c 5-)
+PRIVATE_KEY_FILE="$HOME/.ssh/id_$( echo $PUBLIC_KEY | awk '{print $1}' )"
 
 # Ensure the user isn't trying to get help
 if [[ "$PRIVATE_KEY" == "-h" ]] || [[ "$PRIVATE_KEY" == "--h" ]] || [[ "$PRIVATE_KEY" == "--help" ]] || [[ "$PRIVATE_KEY" == "-help" ]]; then
     echo "Usage: $0 \$PRIVATE_KEY"
     exit 1
 fi
-
 
 # Ensure the .ssh directory exists
 mkdir -p "$HOME/.ssh"
