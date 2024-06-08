@@ -5,7 +5,7 @@ CPK is a little utility script that allows you to add public keys to a server an
 To add a public key, log into the server you wish to add the key to and run the following:
 
 ```bash
-curl -s public.cpk.thomasricci.dev | bash -s $PUBLIC_KEY
+curl -sL public.cpk.thomasricci.dev | bash -s $PUBLIC_KEY
 ```
 
 Where `$PUBLIC_KEY` is your public key.
@@ -14,7 +14,7 @@ Where `$PUBLIC_KEY` is your public key.
 To update your private key, run the following on the client:
 
 ```bash
-curl -s private.cpk.thomasricci.dev | bash -s $PRIVATE_KEY
+curl -sL private.cpk.thomasricci.dev | bash -s $PRIVATE_KEY
 ```
 
 Where `$PRIVATE_KEY` is your private key or the file containing your private key.
