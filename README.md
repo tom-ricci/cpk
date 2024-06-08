@@ -19,5 +19,5 @@ curl -s private.cpk.thomasricci.dev | bash -s $PRIVATE_KEY
 
 Where `$PRIVATE_KEY` is your private key or the file containing your private key.
 
-# development
+## development
 CPK is made of two Bash scripts, `public.sh` and `private.sh`. It is deployed to Cloudflare Pages via Github Actions.
