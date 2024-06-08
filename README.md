@@ -20,7 +20,16 @@ curl -s private.cpk.thomasricci.dev | bash -s $PRIVATE_KEY
 Where `$PRIVATE_KEY` is your private key or the file containing your private key.
 
 ## development
-CPK is made of two Bash scripts, `public.sh` and `private.sh`. It is deployed to Cloudflare Pages via an Action triggered on every push to `main`. So, to update a script, just push.
+CPK is made of two Bash scripts, `public.sh` and `private.sh`. It is deployed to Cloudflare Pages via a Github Actions workflow triggered on every push to `main`. So, to update a script, just push.
 
 > [!Note]
 > The scripts can be deployed manually via the Actions tab as well.
+
+The workflow relies on a few secrets, namely:
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_ACCOUNT_ID`
+- `PUBLIC_PROJECT_ID`
+- `PRIVATE_PROJECT_ID`
+- `GITHUB_TOKEN` (automatically provided at runtime)
+
+Not *all* of these need to be secrets, but I'd rather they stay private.
