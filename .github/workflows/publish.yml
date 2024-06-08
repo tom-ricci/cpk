@@ -1,0 +1,34 @@
+name: Publish to Pages
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bundle scripts for production
+        run: |
+          rm -rf dist
+          mkdir dist
+          mkdir dist/public
+          mkdir dist/private
+          cp public.sh ./dist/public/index.html
+          cp private.sh ./dist/private/index.html
+      - name: Deploy public script
+        uses: cloudflare/pages-action@v1.5.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ secrets.PUBLIC_PROJECT_ID }}
+          directory: ./dist/public
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy private script
+        uses: cloudflare/pages-action@v1.5.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ secrets.PRIVATE_PROJECT_ID }}
+          directory: ./dist/private
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
