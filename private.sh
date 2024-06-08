@@ -24,7 +24,7 @@ mkdir -p "$HOME/.ssh"
 if [ -f $PRIVATE_KEY ]; then
 
     # Copy the private key to the id_rsa file
-    cp "$PRIVATE_KEY_FILE" "$DEST_PRIVATE_KEY"
+    cp "$PRIVATE_KEY" "$DEST_PRIVATE_KEY"
 
 else
 
